@@ -1,5 +1,22 @@
 {
-  "extends": [
-    "config:base"
-  ]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "masterIssue": true,
+  "extends": ["config:base", ":label(renovate)", ":prHourlyLimitNone", ":prConcurrentLimit10", ":timezone(Asia/Tokyo)"],
+  "npm": {
+    "extends": [":automergeMinor", ":unpublishSafe"],
+    "packageRules": [
+      {
+        "extends": "monorepo:aws-cdk",
+        "automerge": false
+      },
+      {
+        "packageNames": ["@aws-sdk/client-auto-scaling-node"],
+        "automerge": false,
+        "description": "this is preview version of it and easy to be broken"
+      }
+    ]
+  },
+  "bundler": {
+    "enabled": true
+  }
 }
