@@ -7,11 +7,13 @@
     "packageRules": [
       {
         "extends": "monorepo:aws-cdk",
-        "automerge": false
+        "automerge": false,
+        "updateTypes": ["minor", "patch", "pin", "digest"]
       },
       {
         "packageNames": ["@aws-sdk/client-auto-scaling-node"],
         "automerge": false,
+        "updateTypes": ["minor", "patch", "pin", "digest"],
         "description": "this is preview version of it and easy to be broken"
       }
     ]
